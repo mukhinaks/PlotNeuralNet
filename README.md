@@ -32,6 +32,9 @@ Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), p
     * Windows
     1. Download and install [MikTeX](https://miktex.org/download).
     2. Download and install bash runner on Windows, recommends [Git bash](https://git-scm.com/download/win) or Cygwin(https://www.cygwin.com/)
+    
+    * Mac
+    Install MacTex from [here](http://www.tug.org/mactex/mactex-download.html).
 
 2. Execute the example as followed.
     ```
@@ -52,7 +55,6 @@ Add the following code to your new file:
 ```python
 import sys
 sys.path.append('../')
-from pycore.tikzeng import *
 from pycore.texpage import *
 
 # Define tex page
