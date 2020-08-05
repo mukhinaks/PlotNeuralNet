@@ -44,42 +44,30 @@ Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), p
 
 ## Python usage
 
-First, create a new directory and a new Python file:
+    import sys
+    sys.path.append('..')
 
-    $ mkdir my_project
-    $ cd my_project
-    vim my_arch.py
+    from core.texpage import *
+    import subprocess
 
-Add the following code to your new file:
+    # Define tex page
+    page = TexPage()
 
-```python
-import sys
-sys.path.append('../')
-from pycore.texpage import *
+    # Add layers to model
+    page.model.addLayer('Conv2D','c1', 2, 64, 64)
+    page.model.addLayer('MaxPool', 'pool1', 2, 32, 32)
+    page.model.addLayer('Conv2D', 'c2', 2, 32, 32)
+    page.model.addLayer('MaxPool', 'pool2', 1, 28, 28)
+    page.model.addLayer('SoftMax', 'soft', 1, 28, 28)
+    page.model.addConnection('pool1', 'c2')
+    page.model.addConnection('pool2', 'soft')
 
-# Define tex page
-page = TexPage()
-
-# Add layers to model
-page.model.addLayer('Conv2D','c1', 2, 64, 64)
-page.model.addLayer('MaxPool', 'pool1', 2, 32, 32)
-page.model.addLayer('Conv2D', 'c2', 2, 32, 32)
-page.model.addLayer('MaxPool', 'pool2', 1, 28, 28)
-page.model.addLayer('SoftMax', 'soft', 1, 28, 28)
-page.model.addConnection('pool1', 'c2')
-page.model.addConnection('pool2', 'soft')
-
-def main():
+    # Create tex file
     namefile = str(sys.argv[0]).split('.')[0]
     page.generate(namefile + '.tex' )
 
-if __name__ == '__main__':
-    main()
-```
-
-Now, run the program as follows:
-
-    bash ../tikzmake.sh my_arch
+    # Run tex to get pdf
+    return_value = subprocess.call(['pdflatex', namefile + '.tex'], shell=False)
 
 
 ## Examples
