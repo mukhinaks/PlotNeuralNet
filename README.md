@@ -34,13 +34,8 @@ Base on this [website](https://gist.github.com/rain1024/98dd5e2c6c8c28f9ea9d), p
     2. Download and install bash runner on Windows, recommends [Git bash](https://git-scm.com/download/win) or Cygwin(https://www.cygwin.com/)
     
     * Mac
-    Install MacTex from [here](http://www.tug.org/mactex/mactex-download.html).
 
-2. Execute the example as followed.
-    ```
-    cd pyexamples/
-    bash ../tikzmake.sh test_simple
-    ```
+      Install MacTex from [here](http://www.tug.org/mactex/mactex-download.html).
 
 ## Python usage
 
