@@ -1,6 +1,6 @@
-from pycore.layers import *
+from core.layers import *
 from collections import OrderedDict
-from pycore.style import Arrow
+from core.style import Arrow
 
 available_layers = {
     'Conv2D': ConvLayer,
@@ -29,7 +29,6 @@ class Model:
         layer.xlabel=""
         layer.ylabel = ""
         layer.zlabel=""
-        layer.opacity=0.6
 
         if autoPosition:
             if len(self.layers) > 0:

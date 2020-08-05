@@ -1,14 +1,14 @@
-from pycore.style import *
-from pycore.model import Model
+from core.style import *
+from core.model import Model
 import os
 
 class TexPage:
-    def __init__(self, texfilespath = '..'):
+    def __init__(self, texfilespath = '.'):
         super().__init__()
         self.colors = ColorScheme()
         self.arrow = Arrow('midarrow')
         self.model = Model()
-        self.path = os.path.join( texfilespath, 'layers/' ).replace('\\', '/') 
+        self.path = os.path.join( texfilespath, 'tex-elements/' ).replace('\\', '/') 
 
     def to_tex(self):
         page = []
@@ -42,5 +42,5 @@ class TexPage:
     def generate(self, pathname="file.tex", ):
         with open(pathname, "w") as f: 
             for c in self.to_tex():
-                print(c)
+               # print(c)
                 f.write( c )

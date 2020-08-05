@@ -1,5 +1,5 @@
 import torch
-from pycore.elements import *
+from core.model import *
 
 def from_pytorch(model):
     arch = Model()

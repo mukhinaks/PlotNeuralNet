@@ -83,3 +83,11 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+pyexamples/alexnet.pdf
+pyexamples/alexnet.py
+pyexamples/four.png
+pyexamples/lenet.pdf
+pyexamples/lenet.py
+pyexamples/test_simple.pdf
+.vscode/launch.json
+.DS_Store

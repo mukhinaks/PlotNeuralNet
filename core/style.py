@@ -1,7 +1,8 @@
 from warnings import warn
+import matplotlib
 
 class Arrow:
-    def __init__(self, name, color = 'rgb:blue,4;red,1;green,3;black,3', line_width = 0.5):
+    def __init__(self, name, color = 'edgecolor', line_width = 0.5):
         self.name = name
         self.color = color
         self.line_width = line_width
@@ -9,7 +10,7 @@ class Arrow:
     def to_tex(self):
         tex_code = "\\newcommand{\\" + self.name + \
                 "}{\\tikz \draw[-Stealth,line width=" + str(self.line_width) + \
-                "mm,draw=\edgecolor] (-0.3,0) -- ++(0.3,0);}"
+                "mm,draw=\\" + self.color + "] (-0.3,0) -- ++(0.3,0);}"
         return tex_code
 
 class ColorScheme:
@@ -23,7 +24,6 @@ class ColorScheme:
             "FcColor": (0, "{rgb:blue,5;red,2.5;white,5}"),
             "FcReluColor": (0, "{rgb:blue,5;red,5;white,4}"),
             "SoftmaxColor": (0, "{rgb:magenta,5;black,7}"),  
-            "mycolor": (1, "{RGB}{255, 87, 51}"),
             "edgecolor": (0, "{rgb:blue,4;red,1;green,3;black,3}"),
             "Default": (1, "{RGB}{255, 87, 51}"),
         }
@@ -31,9 +31,9 @@ class ColorScheme:
     def add_color(self, color_name, color):
         if color_name in self.colors:
             warn('Already existing colour will be changed. Old value: ' + self.colors[color_name], RuntimeWarning)
-            self.colors[color_name] = color
+            self.colors[color_name] = self.__color_to_tex__(color)
         else:
-            self.colors[color_name] = color
+            self.colors[color_name] = self.__color_to_tex__(color)
 
     def to_tex(self):
         colors = ""
@@ -49,6 +49,11 @@ class ColorScheme:
             return self.colors[color_name]
         else:
             return self.colors['Default']
+
+    def __color_to_tex__(self, color):
+        rgb_color = matplotlib.colors.to_rgb(color)
+        tex_color = '{RGB}' + '{' + ','.join( rgb_color) + '}'
+        return tex_color
 
 
 class CaptionStyle:

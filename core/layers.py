@@ -1,4 +1,4 @@
-from pycore.style import ColorScheme
+from core.style import ColorScheme
 
 class BaseLayer:
     def __init__(self):
