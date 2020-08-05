@@ -12,7 +12,7 @@ class BaseLayer:
         self.ylabel = ""
         self.zlabel=""
         self.fill="Default"
-        self.opacity=1.0
+        self.opacity=0.6
         self.offset_from_previous_layer = (0,0,0)
         self.position_of_previous_layer = (0,0,0)
 
@@ -26,7 +26,7 @@ class BaseLayer:
                 xlabel={{"""+ self.xlabel +""", }},
                 ylabel="""+ self.ylabel +""",
                 zlabel="""+ self.zlabel +""",
-                fill=\\"""+ self.fill +""",
+                fill="""+ self.fill +""",
                 opacity="""+ str(self.opacity) +""",
                 height="""+ str(self.height) +""",
                 width="""+ str(self.width) +""",

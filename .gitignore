@@ -1,6 +1,9 @@
 *.aux
 *.log
 *.gz
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 
 __pycache__
 books
@@ -81,8 +84,7 @@ venv.bak/
 # mkdocs documentation
 /site
 
-# mypy
-.mypy_cache/
+
 pyexamples/alexnet.pdf
 pyexamples/alexnet.py
 pyexamples/four.png
@@ -91,3 +93,4 @@ pyexamples/lenet.py
 pyexamples/test_simple.pdf
 .vscode/launch.json
 .DS_Store
+.idea

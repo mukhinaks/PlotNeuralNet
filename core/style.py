@@ -9,23 +9,24 @@ class Arrow:
 
     def to_tex(self):
         tex_code = "\\newcommand{\\" + self.name + \
-                "}{\\tikz \draw[-Stealth,line width=" + str(self.line_width) + \
-                "mm,draw=\\" + self.color + "] (-0.3,0) -- ++(0.3,0);}"
+                "}{\\tikz \\draw[-Stealth,line width=" + str(self.line_width) + \
+                "mm,draw=" + self.color + "] (-0.3,0) -- ++(0.3,0);}"
         return tex_code
+        #\tikzstyle{connection}=[ultra thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
 
 class ColorScheme:
     def __init__(self):
         super().__init__()
         self.colors = {
-            "ConvColor":  (0, "{rgb:yellow,5;red,2.5;white,5}"),
-            "ConvReluColor": (0, "{rgb:yellow,5;red,5;white,5}"),
-            "PoolColor": (0, "{rgb:red,1;black,0.3}"),
-            "UnpoolColor": (0, "{rgb:blue,2;green,1;black,0.3}"),
-            "FcColor": (0, "{rgb:blue,5;red,2.5;white,5}"),
-            "FcReluColor": (0, "{rgb:blue,5;red,5;white,4}"),
-            "SoftmaxColor": (0, "{rgb:magenta,5;black,7}"),  
-            "edgecolor": (0, "{rgb:blue,4;red,1;green,3;black,3}"),
-            "Default": (1, "{RGB}{255, 87, 51}"),
+            "ConvColor":  "{RGB}{255, 204, 102}",
+            "ConvReluColor": "{RGB}{254, 173, 77}",
+            "PoolColor": "{RGB}{196, 0, 0}",
+            "UnpoolColor": "{RGB}{22, 72, 157}",
+            "FCColor": "{RGB}{156, 96, 207}",
+            "FCReluColor": "{RGB}{166, 68, 166}",
+            "SoftmaxColor": "{RGB}{106, 0, 106}",
+            "edgecolor": "{RGB}{60, 60, 60}",
+            "Default": "{RGB}{255, 87, 51}",
         }
 
     def add_color(self, color_name, color):
@@ -38,10 +39,7 @@ class ColorScheme:
     def to_tex(self):
         colors = ""
         for name, color in self.colors.items():
-            if color[0] == 0:
-                colors += "\def\\" + name + color[1] + "\n"
-            else:
-                colors += "\definecolor{" + name + "}" + color[1] + "\n"
+            colors += "\definecolor{" + name + "}" + color + "\n"
         return colors
 
     def get_color(self, color_name = None):

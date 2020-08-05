@@ -59,8 +59,6 @@ class Model:
             tex_code.append(x.tex_code()) 
 
         for x,y in self.connections:
-            tex_code.append(r"""
-                    \draw [connection]  ("""+x+"""-east)    -- node {\midarrow} ("""+y+"""-west);
-                    """)
+            tex_code.append("\\draw [connection]  (" + x + "-east)    -- node {\midarrow} (" + y + "-west);")
         return tex_code
 
