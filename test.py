@@ -1,8 +1,8 @@
 import sys
-sys.path.append('..')
 
 from core.texpage import *
 import subprocess
+import os
 
 # Define tex page
 page = TexPage()
@@ -17,7 +17,7 @@ page.model.addConnection('pool1', 'c2')
 page.model.addConnection('pool2', 'soft')
 
 # Create tex file
-namefile = str(sys.argv[0]).split('.')[0]
+namefile = str(sys.argv[0]).split(os.path.sep)[-1].split('.')[0]
 page.generate(namefile + '.tex' )
 
 # Run tex to get pdf
